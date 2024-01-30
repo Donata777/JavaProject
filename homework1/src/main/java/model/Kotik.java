@@ -14,18 +14,18 @@ public class Kotik {
     К переменной должна применяться арифметическая операция «инкремент» при создании экземпляра класса.*/
     private static int count;
 
+    {
+        count++;
+    }
+
     //конструктор с параметрами
     public Kotik(int prettiness, String name, int weight, String meow) {
-        count++;
-        this.prettiness = prettiness;
-        this.name = name;
-        this.weight = weight;
-        this.meow = meow;
+        setKotik(prettiness, name, weight, meow);
     }
 
     //конструктор без параметров
     public Kotik() {
-        count++;
+
     }
 
     public void setKotik(int prettiness, String name, int weight, String meow) {
@@ -66,58 +66,48 @@ public class Kotik {
     Если котик голоден - он будет просить есть, а не выполнять указанное действие.*/
 
     public boolean wash() {
-        if (degreeSatiety <= 0) {
-            System.out.println("Хочу есть, не могу ничего делать!");
-            return false;
-        } else {
-            degreeSatiety = degreeSatiety - 1;
+        if (degreeSatiety > 0) {
+            degreeSatiety--;
             System.out.println("Умылся от души, " + "степень сытости: " + degreeSatiety);
             return true;
         }
+        return false;
     }
 
     public boolean sleep() {
-        if (degreeSatiety <= 0) {
-            System.out.println("Хочу есть, не могу ничего делать!");
-            return false;
-        } else {
-            degreeSatiety = degreeSatiety - 2;
+        if (degreeSatiety > 0) {
+            degreeSatiety--;
             System.out.println("Хорошо поспал, " + "степень сытости: " + degreeSatiety);
             return true;
         }
+        return false;
     }
 
     public boolean play() {
-        if (degreeSatiety <= 0) {
-            System.out.println("Хочу есть, не могу ничего делать!");
-            return false;
-        } else {
-            degreeSatiety = degreeSatiety - 3;
+        if (degreeSatiety > 0) {
+            degreeSatiety--;
             System.out.println("Поиграл, " + "степень сытости: " + degreeSatiety);
             return true;
         }
+        return false;
     }
 
     public boolean chaseMouse() {
-        if (degreeSatiety <= 0) {
-            System.out.println("Хочу есть, не могу ничего делать!");
-            return false;
-        } else {
-            degreeSatiety = degreeSatiety - 4;
+        if (degreeSatiety > 0) {
+            degreeSatiety--;
             System.out.println("Поймал несколько мышек, " + "степень сытости: " + degreeSatiety);
             return true;
         }
+        return false;
     }
 
     public boolean walk() {
-        if (degreeSatiety <= 0) {
-            System.out.println("Хочу есть, не могу ничего делать!");
-            return false;
-        } else {
-            degreeSatiety = degreeSatiety - 5;
+        if (degreeSatiety > 0) {
+            degreeSatiety--;
             System.out.println("Погулял на улице, " + "степень сытости: " + degreeSatiety);
             return true;
         }
+        return false;
     }
 
     /*Сделать три перегрузки метода eat(), одна из них будет принимать только количество условных единиц сытости,
@@ -126,7 +116,6 @@ public class Kotik {
 
     public void eat(int foodUnits) {
         degreeSatiety += foodUnits;
-        System.out.println("Восполним потерянные калории, " + "cтепень сытости стала: " + degreeSatiety);
     }
 
     public void eat(int foodUnits, String nameFood) {
@@ -166,9 +155,5 @@ public class Kotik {
             if (!done)
                 eat();
         }
-    }
-
-    public boolean compareMeow(Kotik otherKotik) {
-        return this.meow.equals(otherKotik.getMeow());
     }
 }

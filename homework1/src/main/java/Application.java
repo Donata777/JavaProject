@@ -20,7 +20,7 @@ String meow) для инициализации переменных.*/
         System.out.println("Вес котика: " + kotik1.getWeight());
 
         //Вывести на экран результат сравнения одинаково ли разговаривают котики (сравнить переменные meow).
-        System.out.println("Одинаково ли разговаривают котики? " + kotik1.compareMeow(kotik2));
+        System.out.println("Одинаково ли разговаривают котики? " + kotik1.getMeow().equals(kotik2.getMeow()));
 
         //Вывести на экран количество котиков, созданных в процессе выполнения программы
         System.out.println("Количество котиков: " + Kotik.getCount());
