@@ -2,22 +2,21 @@ package animals;
 
 import food.Food;
 import food.Grass;
-import food.Meat;
 
 public abstract class Herbivore extends Animal{
 
-    public Herbivore(String name, int degreeSatiety) {
-        super(name, degreeSatiety);
+    public Herbivore(String name, int degreeSatiety, Size requiredSize) {
+        super(name, degreeSatiety,requiredSize);
     }
 
     @Override
-    public void eat(Food food) {
+    public void eat(Food food) throws WrongFoodException {
         if (food instanceof Grass) {
             System.out.print("Время покормить " + getName() + " " + food.getName());
             addDegreeSatiety(food);
             System.out.println(". Степень сытости: " + getDegreeSatiety());
         } else {
-            System.out.println("Травоядные не едят мясо!");
+            throw new WrongFoodException("Травоядные не едят мясо!");
         }
     }
 
